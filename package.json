@@ -2,7 +2,7 @@
   "name": "virtual-zoo",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack server",
+    "start": "webpack serve",
     "test": "mocha ./tests/*.spec.js --recursive --watch --require @babel/register"
   },
   "devDependencies": {
