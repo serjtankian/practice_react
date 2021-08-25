@@ -1,18 +1,27 @@
-import React, {Component} from 'react';
-import AnimalSelect from './AnimalSelect';
-import Cage from './Cage';
-
+import React, { Component } from "react";
+import AnimalSelect from "./AnimalSelect";
+import Cage from "./Cage";
 
 export default class Exhibit extends Component {
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedAnimal: this.props.selectedAnimal,
+    };
+    this.setAnimal = this.setAnimal.bind(this);
   }
 
-  render () {
-  	return (
-	    <div className="exhibit">
-	    </div>
-  		)
+  setAnimal(animal) {
+    this.setState({ selectedAnimal: animal });
   }
-};
+
+  render() {
+    const { animals } = this.props;
+    return (
+      <div className="exhibit">
+        <AnimalSelect animals={animals} submitAnimal={this.setAnimal} />
+        <Cage selectedAnimal={this.state.selectedAnimal} />
+      </div>
+    );
+  }
+}
